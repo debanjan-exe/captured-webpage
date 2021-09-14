@@ -1,31 +1,39 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { MovieState } from "../movieState"
+// Animations
+import { motion } from 'framer-motion'
+import { pageAnimation } from '../animation'
 
 const MovieDetail = () => {
     const history = useHistory();
     const url = history.location.pathname;
     const [movies, setMovies] = useState(MovieState);
     const [movie, setMovie] = useState(null);
-    
+
     useEffect(() => {
         const currentMovie = movies.filter((stateMovie) => stateMovie.url === url);
         setMovie(currentMovie[0]);
     }, [movies, url])
-    
+
     return (
         <>
             {movie && (
-                <Details>
+                <Details
+                    variants={pageAnimation}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                >
                     <HeadLine>
                         <h2>{movie.title}</h2>
                         <img src={movie.mainImg} alt="movie" />
                     </HeadLine>
                     <Awards>
                         {movie.awards.map((award) => (
-                            <Award 
-                                title={award.title} 
+                            <Award
+                                title={award.title}
                                 description={award.description}
                                 key={award.title}
                             />
@@ -40,7 +48,7 @@ const MovieDetail = () => {
     )
 }
 
-const Details = styled.div`
+const Details = styled(motion.div)`
     color: white;
 `
 
@@ -68,10 +76,15 @@ const Awards = styled.div`
     margin: 5rem 10rem;
     align-items: center;
     justify-content: space-around;
+    @media (max-width: 1300px){
+        display: block;
+        margin: 2rem 0rem;
+        /* width: 100%; */
+    }
 
 `
 
-const AwardStyle =styled.div`
+const AwardStyle = styled.div`
     padding: 5rem;
     h3{
         font-size: 2rem;
@@ -99,8 +112,8 @@ const ImageDisplay = styled.div`
 
 //Award component
 
-const Award = ({title, description}) => {
-    return(
+const Award = ({ title, description }) => {
+    return (
         <AwardStyle>
             <h3>{title}</h3>
             <div className="line"></div>

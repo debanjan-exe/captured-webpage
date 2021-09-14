@@ -6,11 +6,19 @@ const GlobalStyle = createGlobalStyle`
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    user-select: none;
+}
+
+html {
+    @media (max-width: 1500px){
+        font-size: 75%;
+    }
 }
 
 body{
     background: #1b1b1b;
     font-family: "Inter", sans-serif;
+    overflow-x: hidden;
 }
 
 button{
@@ -33,6 +41,9 @@ button{
 h2{
     font-weight: lighter;
     font-size: 4rem;
+    @media (max-width: 1300px){
+        font-size: 2rem;
+    }
 }
 
 h3{
@@ -54,7 +65,7 @@ span{
 }
 
 p{
-    padding: 3rem 0rem;
+    padding: 0rem 0rem;
     color: #ccc;
     font-size: 1.4rem;
     line-height: 150%;

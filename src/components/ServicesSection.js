@@ -8,10 +8,15 @@ import home2 from "../img/home2.png"
 //Import styles
 import styled from "styled-components"
 import { About, Description, Image } from "../styles.js"
+import { useInView } from "react-intersection-observer"
+import { useAnimation } from "framer-motion"
+import { fade } from '../animation'
+import { useScroll } from './useScroll'
 
 const ServicesSection = () => {
+    const [element, controls] = useScroll();
     return (
-        <Services>
+        <Services variants={fade} initial="hidden" animate={controls} ref={element}>
             <Description>
                 <h2>Hi <span>quality</span> services</h2>
                 <Cards>
@@ -47,7 +52,7 @@ const ServicesSection = () => {
                         </div>
                         <p>Lorem ipsum dolor sit amet.</p>
                     </Card>
-                
+
                 </Cards>
             </Description>
             <Image>
@@ -70,6 +75,10 @@ const Services = styled(About)`
 const Cards = styled.div`
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    @media (max-width: 1300px){
+        justify-content: center;
+    }
 `
 
 const Card = styled.div`
