@@ -73,13 +73,13 @@ const StyledNav = styled.nav`
 
     @media (max-width: 1300px){
         flex-direction: column;
-        padding: 2rem 1rem;
+        padding: 0rem 1rem;
         #logo{
             display: inline-block;
-            margin: 2rem;
+            margin: 1rem 2rem;
         }
         ul{
-            padding: 2rem;
+            padding: 1rem 1rem;
             justify-content: space-around;
             width: 100%
         }

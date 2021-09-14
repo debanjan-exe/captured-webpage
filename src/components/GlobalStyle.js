@@ -7,6 +7,25 @@ const GlobalStyle = createGlobalStyle`
     padding: 0%;
     box-sizing: border-box;
     user-select: none;
+    
+    ::-webkit-scrollbar {
+        width: 5px;
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 5px;
+        /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25); */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #5a5a5a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #bebebe;
+    }
 }
 
 html {
